@@ -98,7 +98,7 @@
                 },
                 success: function(data) {
                     if (data.status === 1) {
-                        window.location.href = '/admin'
+                        window.location.href = '/admin/user'
                     }
                     else {
                         alert(data.message)

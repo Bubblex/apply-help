@@ -30,8 +30,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
      * 必须登录的路由组
      */
     Route::group(['middleware' => 'admin'], function() {
-        Route::get('', 'UserController@userListPage');
-
         Route::get('user', 'UserController@userListPage');
 
         Route::group(['prefix' => 'user'], function() {

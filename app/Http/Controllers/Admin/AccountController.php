@@ -62,7 +62,7 @@ class AccountController extends Controller
             ]);
         }
 
-        session(['user' => $user]);
+        session(['admin' => $user]);
 
         return response()->json([
             'status' => 1,
