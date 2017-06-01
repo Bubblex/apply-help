@@ -24,7 +24,7 @@
                 </li> --}}
                 {{-- <li class="divider"></li> --}}
                 <li>
-                    <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
+                    <a href="/admin/logout"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
