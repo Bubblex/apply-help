@@ -28,5 +28,7 @@ class User extends Model
 
     protected $guarded = [];
 
-        
+    public function role() {
+        return $this->belongsTo('App\Models\Role', 'role_id');
+    }
 }

@@ -31,16 +31,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
      */
     Route::group(['middleware' => 'admin'], function() {
         /**
-         * 用户列表页
-         */
-        Route::get('user', 'UserController@userListPage');
-
-        /**
          * 退出登录
          */
         Route::get('logout', 'AccountController@logout');
 
         Route::group(['prefix' => 'user'], function() {
+            /**
+             * 用户列表页
+             */
+            Route::get('', 'UserController@userListPage');
+
+            /**
+             * 禁用 / 启用用户
+             */
+            Route::post('status', 'UserController@userStatus');
         });
     });
 });

@@ -13,14 +13,25 @@ class UserRepository
     }
 
     /**
+     * 查询所有用户
+     *
+     * @param array $columns
+     * @param array $with
+     * @return void
+     */
+    public function all($columns = ['*'], $with = []) {
+        return $this->user->with($with)->select($columns)->get();
+    }
+
+    /**
      * 根据条件查询单条
      *
      * @param array $where
      * @param array $colums
      * @return void
      */
-    public function findWhereFirst(array $where, $columns = ['*']) {
-        return $this->user->where($where)->select($columns)->first();
+    public function findWhereFirst(array $where, $columns = ['*'], $with = []) {
+        return $this->user->where($where)->with($with)->select($columns)->first();
     }
 
     /**
@@ -32,5 +43,16 @@ class UserRepository
      */
     public function findWhere(array $where, $columns = ['*']) {
         return $this->user->where($where)->select($columns)->get();
+    }
+
+    /**
+     * 根据 id 更新单条数据
+     *
+     * @param [type] $id
+     * @param [type] $update
+     * @return void
+     */
+    public function update($id, $update) {
+        $this->user->find($id)->update($update);
     }
 }

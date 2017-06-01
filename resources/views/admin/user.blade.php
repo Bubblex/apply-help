@@ -68,16 +68,45 @@
                                         <th>详细地址</th>
                                         <th>状态</th>
                                         <th>注册日期</th>
+                                        <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd gradeX">
-                                        <td>Trident</td>
-                                        <td>Internet Explorer 4.0</td>
-                                        <td>Win 95+</td>
-                                        <td class="center">4</td>
-                                        <td class="center">X</td>
-                                    </tr>
+                                    @foreach ($users as $item)
+                                        <tr class="odd gradeX">
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->telephone }}</td>
+                                            <td>
+                                                @if ($item->gender == 1)
+                                                    男
+                                                @elseif ($item->gender == 2)
+                                                    女
+                                                @else
+                                                    其他
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->role->name }}</td>
+                                            <td>{{ $item->school or '-' }}</td>
+                                            <td>{{ $item->dorm or '-' }}</td>
+                                            <td>{{ $item->address or '-' }}</td>
+                                            <td>
+                                                @if ($item->status == 1)
+                                                    正常
+                                                @elseif ($item->status == 2)
+                                                    已禁用
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->created_at }}</td>
+                                            <td>
+                                                @if ($item->status == 1)
+                                                    <a href="javascript:" class="btn-status" data-status="2" data-id="{{ $item->id }}">禁用</a>
+                                                @elseif ($item->status == 2)
+                                                    <a href="javascript:" class="btn-status" data-status="1" data-id="{{ $item->id }}">启用</a>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- /.table-responsive -->
@@ -127,45 +156,20 @@
                 info: '当前展示第 _START_ 到第 _END_ 条，共计 _TOTAL_ 条'
             },
             drawCallback: function() {
-              $('.goods-delete').on('click', function() {
-                var id = $(this).attr('data-id')
+                $('.btn-status').on('click', function() {
+                    $.ajax({
+                        url: '/admin/user/status',
+                        type: 'post',
+                        data: $(this).data(),
+                        success: function(data) {
+                            alert(data.message)
 
-                $.ajax({
-                  url: '/admin/goods/delete',
-                  type: 'post',
-                  data: {
-                    id: id,
-                  },
-                  success: function(data) {
-                    alert(data.message)
-
-                    if (data.status === 1) {
-                      window.location.reload()
-                    }
-                  }
+                            if (data.status === 1) {
+                                window.location.reload()
+                            }
+                        }
+                    })
                 })
-              })
-
-              $('.goods-status').on('click', function() {
-                var id = $(this).attr('data-id')
-                var status = $(this).attr('data-status')
-
-                $.ajax({
-                  url: '/admin/goods/disable',
-                  type: 'post',
-                  data: {
-                    id: id,
-                    status: status,
-                  },
-                  success: function(data) {
-                    alert(data.message)
-
-                    if (data.status === 1) {
-                      window.location.reload()
-                    }
-                  }
-                })
-              })
             },
         })
     </script>
