@@ -43,7 +43,7 @@
                         <form role="form">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="请输入手机号" name="email" type="text" autofocus>
+                                    <input class="form-control" placeholder="请输入手机号" name="telephone" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="请输入密码" name="password" type="password" value="">
@@ -54,7 +54,7 @@
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                                <a href="javascript:" class="btn btn-lg btn-success btn-block btn-login">登录</a>
                             </fieldset>
                         </form>
                     </div>
@@ -75,6 +75,38 @@
     <!-- Custom Theme JavaScript -->
     <script src="/admin/dist/js/sb-admin-2.js"></script>
 
-</body>
+    <script>
+        $('.btn-login').on('click', function() {
+            var telephone = $('input[name="telephone"]').val()
+            var password = $('input[name="password"]').val()
 
+            if (!telephone) {
+                alert('请输入手机号')
+                return
+            }
+            else if (!password) {
+                alert('请输入密码')
+                return
+            }
+
+            $.ajax({
+                url: '/admin/login',
+                type: 'post',
+                data: {
+                    telephone: telephone,
+                    password: password
+                },
+                success: function(data) {
+                    if (data.status === 1) {
+                        window.location.href = '/admin'
+                    }
+                    else {
+                        alert(data.message)
+                    }
+                }
+            })
+        })
+    </script>
+
+</body>
 </html>
