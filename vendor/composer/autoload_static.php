@@ -272,6 +272,9 @@ class ComposerStaticInit6e11754ad191bcdd67e14d96ad5e0955
     );
 
     public static $classMap = array (
+        'AddFoeignToDonates' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_151956_add_foeign_to_donates.php',
+        'AddForeignToGoods' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_151619_add_foreign_to_goods.php',
+        'AddForeignToUsers' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_151517_add_foreign_to_users.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -293,7 +296,12 @@ class ComposerStaticInit6e11754ad191bcdd67e14d96ad5e0955
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
+        'CreateDonatesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_142848_create_donates_table.php',
+        'CreateGoodsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_141857_create_goods_table.php',
+        'CreateGoodsTypesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_141821_create_goods_types_table.php',
+        'CreateHelpsTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_140433_create_helps_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateRolesTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_31_134021_create_roles_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
@@ -3198,6 +3206,7 @@ class ComposerStaticInit6e11754ad191bcdd67e14d96ad5e0955
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Property\\Property' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Property/Property.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
