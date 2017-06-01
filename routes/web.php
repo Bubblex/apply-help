@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+    /**
+     * 登录页
+     */
+    Route::get('login', 'AccountController@loginPage');
+
+    /**
+     * 登录接口
+     */
+    Route::post('login', 'AccountController@login');
+
+    /**
+     * 必须登录的路由组
+     */
+    Route::group(['middleware' => 'admin'], function() {
+        Route::group(['prefix' => 'user'], function() {
+        });
+    });
+});

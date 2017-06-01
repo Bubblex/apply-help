@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('school')->nullable()->commnet('学校');
             $table->string('dorm')->nullable()->comment('宿舍楼');
             $table->string('address')->nullable()->comment('详细地址');
-            $table->string('status')->detaul(1)->comment('账户状态 1: 正常 2: 已禁用');
+            $table->string('status')->default(1)->comment('账户状态 1: 正常 2: 已禁用');
             $table->rememberToken();
             $table->timestamps();
         });
