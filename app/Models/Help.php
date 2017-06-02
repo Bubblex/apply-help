@@ -29,6 +29,4 @@ class Help extends Model
     ];
 
     protected $guarded = [];
-
-        
 }

@@ -46,5 +46,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
              */
             Route::post('status', 'UserController@userStatus');
         });
+
+        Route::group(['prefix' => 'help'], function() {
+            /**
+             * 申请帮助页
+             */
+            Route::get('', 'HelpController@helpListPage');
+        });
     });
 });
