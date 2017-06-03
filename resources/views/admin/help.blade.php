@@ -44,14 +44,14 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">用户管理</h1>
+                    <h1 class="page-header">申请帮助管理</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            用户列表
+                            申请帮助列表
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -60,14 +60,13 @@
                                     <tr>
                                         <th>编号</th>
                                         <th>姓名</th>
-                                        <th>手机号</th>
                                         <th>性别</th>
-                                        <th>角色</th>
-                                        <th>所在学校</th>
-                                        <th>所在宿舍楼</th>
-                                        <th>详细地址</th>
+                                        <th>身份证号</th>
+                                        <th>联系方式</th>
+                                        <th>所需物品</th>
+                                        <th>所需物品数量</th>
                                         <th>状态</th>
-                                        <th>注册日期</th>
+                                        <th>申请日期</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
@@ -76,7 +75,6 @@
                                         <tr class="odd gradeX">
                                             <td>{{ $loop->index + 1 }}</td>
                                             <td>{{ $item->name }}</td>
-                                            <td>{{ $item->telephone }}</td>
                                             <td>
                                                 @if ($item->gender == 1)
                                                     男
@@ -86,23 +84,27 @@
                                                     其他
                                                 @endif
                                             </td>
-                                            <td>{{ $item->role->name }}</td>
-                                            <td>{{ $item->school or '-' }}</td>
-                                            <td>{{ $item->dorm or '-' }}</td>
-                                            <td>{{ $item->address or '-' }}</td>
+                                            <td>{{ $item->id_card }}</td>
+                                            <td>{{ $item->telephone }}</td>
+                                            <td>{{ $item->needed }}</td>
+                                            <td>{{ $item->needed_num }}</td>
                                             <td>
                                                 @if ($item->status == 1)
-                                                    正常
+                                                    已发布
                                                 @elseif ($item->status == 2)
-                                                    已禁用
+                                                    待审核
+                                                @elseif ($item->status == 3)
+                                                    被驳回
+                                                @elseif ($item->status == 4)
+                                                    已取消申请
                                                 @endif
                                             </td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
-                                                @if ($item->status == 1)
-                                                    <a href="javascript:" class="btn-status" data-status="2" data-id="{{ $item->id }}">禁用</a>
-                                                @elseif ($item->status == 2)
-                                                    <a href="javascript:" class="btn-status" data-status="1" data-id="{{ $item->id }}">启用</a>
+                                                <a href="javascript:">查看详情</a>
+                                                @if ($item->status == 2)
+                                                    <a href="javascript:" class="pass-btn" data-id="{{ $item->id }}">通过</a>
+                                                    <a href="javascript:" class="fail-btn" data-id="{{ $item->id }}">驳回</a>
                                                 @endif
                                             </td>
                                         </tr>

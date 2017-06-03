@@ -35,7 +35,10 @@
                     <a href="/"><i class="fa fa-dashboard fa-fw"></i> 前往首页</a>
                 </li>
                 <li>
-                    <a href="/admin/user"><i class="fa fa-table fa-fw"></i> 用户列表</a>
+                    <a href="/admin/user"><i class="fa fa-table fa-fw"></i> 用户管理</a>
+                </li>
+                <li>
+                    <a href="/admin/help"><i class="fa fa-table fa-fw"></i> 申请帮助管理</a>
                 </li>
             </ul>
         </div>

@@ -26,7 +26,7 @@ class CreateHelpsTable extends Migration
             $table->string('province')->comment('省市');
             $table->string('street')->comment('街道');
             $table->string('address')->comment('详细地址');
-            $table->integer('status')->default(2)->comment('状态 1: 正常 2: 审核中 3: 审核未通过');
+            $table->integer('status')->default(2)->comment('状态 1: 正常 2: 审核中 3: 审核未通过 4: 已取消申请');
             $table->timestamps();
             $table->softDeletes();
         });
