@@ -22,4 +22,26 @@ class HelpRepository
     public function all($columns = ['*'], $with = []) {
         return $this->help->with($with)->select($columns)->get();
     }
+
+    /**
+     * 根据 id 更新数据
+     *
+     * @param [type] $id
+     * @param [type] $update
+     * @return void
+     */
+    public function update($id, $update) {
+        if($this->help->where('id', $id)->update($update)) {
+            return response()->json([
+                'status' => 1,
+                'message' => '更新成功'
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '更新失败'
+            ]);
+        }
+    }
 }

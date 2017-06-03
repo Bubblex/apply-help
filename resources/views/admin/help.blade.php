@@ -103,8 +103,8 @@
                                             <td>
                                                 <a href="javascript:">查看详情</a>
                                                 @if ($item->status == 2)
-                                                    <a href="javascript:" class="pass-btn" data-id="{{ $item->id }}">通过</a>
-                                                    <a href="javascript:" class="fail-btn" data-id="{{ $item->id }}">驳回</a>
+                                                    <a href="javascript:" class="review-btn" data-status="1" data-id="{{ $item->id }}">通过</a>
+                                                    <a href="javascript:" class="review-btn" data-status="3" data-id="{{ $item->id }}">驳回</a>
                                                 @endif
                                             </td>
                                         </tr>
@@ -168,6 +168,22 @@
 
                             if (data.status === 1) {
                                 window.location.reload()
+                            }
+                        }
+                    })
+                })
+
+                $('.review-btn').on('click', function() {
+                    $.ajax({
+                        url: '/admin/help/status',
+                        type: 'post',
+                        data: {
+                            id: $(this).attr('data-id'),
+                            status: $(this).attr('data-status')
+                        },
+                        success: function(data) {
+                            if (data.status === 1) {
+                                window.location.reload();
                             }
                         }
                     })

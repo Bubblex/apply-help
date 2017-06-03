@@ -15,9 +15,26 @@ class HelpController extends Controller
         $this->help = $help;
     }
 
+    /**
+     * 帮助列表页
+     *
+     * @return void
+     */
     public function helpListPage() {
         return view('admin.help')->with([
             'helps' => $this->help->all()
+        ]);
+    }
+
+    /**
+     * 更新帮助状态
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function helpStatus(Request $request) {
+        return $this->help->update($request->id, [
+            'status' => $request->status
         ]);
     }
 }
