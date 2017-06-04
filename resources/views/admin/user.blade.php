@@ -63,10 +63,8 @@
                                         <th>手机号</th>
                                         <th>性别</th>
                                         <th>角色</th>
-                                        <th>所在学校</th>
-                                        <th>所在宿舍楼</th>
-                                        <th>详细地址</th>
                                         <th>状态</th>
+                                        <th>备注</th>
                                         <th>注册日期</th>
                                         <th>操作</th>
                                     </tr>
@@ -87,9 +85,6 @@
                                                 @endif
                                             </td>
                                             <td>{{ $item->role->name }}</td>
-                                            <td>{{ $item->school or '-' }}</td>
-                                            <td>{{ $item->dorm or '-' }}</td>
-                                            <td>{{ $item->address or '-' }}</td>
                                             <td>
                                                 @if ($item->status == 1)
                                                     正常
@@ -97,9 +92,12 @@
                                                     已禁用
                                                 @endif
                                             </td>
+                                            <td>{{ $item->remarks or '-'}}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <a href="/admin/user/detail?id={{ $item->id }}">查看详情</a>
+                                                <!-- Button trigger modal -->
+                                                <a href="#" class="btn-remarks" data-id="{{ $item->id }}" data-toggle="modal" data-target="#myModal" data-content="{{ $item->remarks }}">添加备注</a>
                                                 @if ($item->status == 1)
                                                     <a href="javascript:" class="btn-status" data-status="2" data-id="{{ $item->id }}">禁用</a>
                                                 @elseif ($item->status == 2)
@@ -121,6 +119,27 @@
         </div>
     </div>
     <!-- /#wrapper -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加备注</h4>
+            </div>
+            <div class="modal-body">
+                <textarea id="remarks-textarea" class="form-control"></textarea>
+                <input type="hidden" id="user-id">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary save-remarks">保存</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="/admin/vendor/jquery/jquery.min.js"></script>
@@ -162,6 +181,29 @@
                         url: '/admin/user/status',
                         type: 'post',
                         data: $(this).data(),
+                        success: function(data) {
+                            alert(data.message)
+
+                            if (data.status === 1) {
+                                window.location.reload()
+                            }
+                        }
+                    })
+                })
+
+                $('.btn-remarks').on('click', function () {
+                    $('#remarks-textarea').val($(this).attr('data-content'))
+                    $('#user-id').val($(this).attr('data-id'));
+                })
+
+                $('.save-remarks').on('click', function() {
+                    $.ajax({
+                        url: '/admin/user/remarks',
+                        type: 'post',
+                        data: {
+                            id: $('#user-id').val(),
+                            remarks: $('#remarks-textarea').val()
+                        },
                         success: function(data) {
                             alert(data.message)
 

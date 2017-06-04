@@ -50,6 +50,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
              * 用户详情页
              */
             Route::get('detail', 'UserController@userDetailPage');
+
+            /**
+             * 添加 / 修改用户备注
+             */
+            Route::post('remarks', 'UserController@userRemarks');
         });
 
         Route::group(['prefix' => 'help'], function() {

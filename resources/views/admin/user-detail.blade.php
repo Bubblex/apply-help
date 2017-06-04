@@ -92,6 +92,9 @@
                                     <p class="col-sm-9 form-control-static">{{ $user->address or '-' }}</p>
                                 </div>
                                 <div class="form-group">
+                                    <label class="col-sm-3 control-label">备注</label>
+                                    <p class="col-sm-9 form-control-static">{{ $user->remarks or '-' }}</p>
+                                <div class="form-group">
                                     <label class="col-sm-3 control-label">注册时间</label>
                                     <p class="col-sm-9 form-control-static">{{ $user->created_at }}</p>
                                 </div>
