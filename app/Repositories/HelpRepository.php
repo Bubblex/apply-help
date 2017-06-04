@@ -56,4 +56,15 @@ class HelpRepository
             ]);
         }
     }
+
+    /**
+     * 分页查询
+     *
+     * @param array $where
+     * @param array $columns
+     * @return void
+     */
+    public function paginate($where = [], $columns = ['*']) {
+        return $this->help->where($where)->with('donates')->select($columns)->paginate();
+    }
 }

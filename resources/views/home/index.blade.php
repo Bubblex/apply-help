@@ -55,12 +55,12 @@
                 <div class="col-8 offset-8">
                     <p>历史捐助物品数</p>
                     <div class="account">
-                        <span class="account-thing"> 11111 </span>件</div>
+                        <span class="account-thing"> {{ $help_num }} </span>件</div>
                 </div>
                 <div class="col-6">
                     <p>历史捐助人数</p>
                     <div class="account">
-                        <span class="account-people"> 11111 </span>人</div>
+                        <span class="account-people"> {{ $people_num }} </span>人</div>
                 </div>
             </div>
         </div>
@@ -69,58 +69,41 @@
     <!-- BEGIN 帮助列表-->
     <div class="main-container">
         <div class="need-help-list">
-            <div class="need-help-item">
-                <div class="row">
-                    <div class="col-8">
-                        <img src="/resource/image/banner.png">
-                    </div>
-                    <div class="col-16">
-                        <p class="summary">一个帮助，让贫困女童继续求学梦想。女童是弱势群体中的弱势；今天的女童，将成为明天的母亲，帮助一名贫困女童，不仅是帮助一个人，而是帮助至少一代人。从传统的项目执行到前沿的公益创投、影响力投资，王兵的布阵越来越大，下一步，他要为行业再造新生。
-                            <a href="/home/applydetail">详情</a>
-                        </p>
-                        <p class="type">书包</p>
-                        <div class="row">
-                            <div class="col-4">
-                                <p>0人帮助</p>
-                            </div>
-                            <div class="col-4 offset-16">
-                                <a class="help" href="javascript:">帮助</a>
+            @foreach ($helps as $item)
+                <div class="need-help-item">
+                    <div class="row">
+                        <div class="col-8">
+                            <img src="{{ $item->image }}">
+                        </div>
+                        <div class="col-16">
+                            <p class="summary">
+                                {{ $item->summary }}
+                                <a href="/home/applydetail?id={{ $item->id }}">详情</a>
+                            </p>
+                            <p class="type">{{ $item->needed }}</p>
+                            <div class="row">
+                                <div class="col-4">
+                                    <p>{{ count($item->donates) }}人帮助</p>
+                                </div>
+                                <div class="col-4 offset-16">
+                                    <a class="help" href="javascript:">帮助</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="need-help-item">
-                <div class="row">
-                    <div class="col-8">
-                        <img src="/resource/image/banner.png">
-                    </div>
-                    <div class="col-16">
-                        <p class="summary">一个帮助，让贫困女童继续求学梦想。女童是弱势群体中的弱势；今天的女童，将成为明天的母亲，帮助一名贫困女童，不仅是帮助一个人，而是帮助至少一代人。从传统的项目执行到前沿的公益创投、影响力投资，王兵的布阵越来越大，下一步，他要为行业再造新生。
-                            <a href="/home/applydetail">详情</a>
-                        </p>
-                        <p class="type">书包</p>
-                        <div class="row">
-                            <div class="col-4">
-                                <p>0人帮助</p>
-                            </div>
-                            <div class="col-4 offset-16">
-                                <a class="help" href="javascript:">帮助</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+        {!! $helps->render() !!}
         <!--  分页-->
-        <div class="pageContent">
+        {{-- <div class="pageContent">
             <div class="page">
                 <input id="totalCount" type="hidden" value="2">
                 <input id="page" type="hidden" value="2">
                 <input id="pageCount" type="hidden" value="4">
                 <ul id="webPagination"></ul>
             </div>
-        </div>
+        </div> --}}
     </div>
     <!-- END 帮助列表-->
     <script src="/resource/vendor/jquery/jquery-3.1.1.min.js"></script>

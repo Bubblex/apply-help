@@ -29,4 +29,8 @@ class Help extends Model
     ];
 
     protected $guarded = [];
+
+    public function donates() {
+        return $this->belongsToMany('App\Models\User', 'donates', 'help_id', 'user_id')->withPivot('status', 'message');
+    }
 }

@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('', 'Home\HomeController@homePage');
+
 Route::group(['prefix' => 'home', 'namespace' => 'Home'], function() {
     /**
      * 注册页面

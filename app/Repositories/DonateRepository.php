@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use DB;
 use App\Models\Donate;
 
 class DonateRepository
@@ -18,5 +19,13 @@ class DonateRepository
 
     public function update($id, $update) {
         return $this->donate->find($id)->update($update);
+    }
+
+    public function getCountByUser() {
+        return count($this->donate->select(DB::raw('count(*) as user_count'))->groupBy(['user_id'])->get());
+    }
+
+    public function getCountByHelp() {
+        return $this->donate->where('status', 2)->count();
     }
 }
