@@ -40,6 +40,9 @@
                 <li>
                     <a href="/admin/help"><i class="fa fa-table fa-fw"></i> 申请帮助管理</a>
                 </li>
+                <li>
+                    <a href="/admin/donate"><i class="fa fa-table fa-fw"></i> 捐物管理</a>
+                </li>
             </ul>
         </div>
     </div>

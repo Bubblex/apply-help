@@ -73,5 +73,22 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
              */
             Route::get('detail', 'HelpController@helpDetailPage');
         });
+
+        Route::group(['prefix' => 'donate'], function() {
+            /**
+             * 捐物列表页
+             */
+            Route::get('', 'DonateController@donateListPage');
+
+            /**
+             * 确认取件
+             */
+            Route::post('confirm', 'DonateController@confirm');
+
+            /**
+             * 填写物流信息
+             */
+            Route::post('message', 'DonateController@message');
+        });
     });
 });

@@ -44,14 +44,14 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">用户管理</h1>
+                    <h1 class="page-header">捐物管理</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            用户列表
+                            捐物列表
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -59,49 +59,39 @@
                                 <thead>
                                     <tr>
                                         <th>编号</th>
-                                        <th>姓名</th>
-                                        <th>手机号</th>
-                                        <th>性别</th>
-                                        <th>角色</th>
-                                        <th>状态</th>
-                                        <th>备注</th>
-                                        <th>注册日期</th>
+                                        <th>资助人</th>
+                                        <th>资助人电话</th>
+                                        <th>资助人地址</th>
+                                        <th>受助人</th>
+                                        <th>受助人电话</th>
+                                        <th>受助人地址</th>
+                                        <th>发货状态</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $item)
+                                    @foreach ($donates as $item)
                                         <tr class="odd gradeX">
                                             <td>{{ $loop->index + 1 }}</td>
-                                            <td>{{ $item->name }}</td>
-                                            <td>{{ $item->telephone }}</td>
+                                            <td>{{ $item->user->name }}</td>
+                                            <td>{{ $item->user->telephone }}</td>
+                                            <td>{{ $item->user->address }}</td>
+                                            <td>{{ $item->help->name }}</td>
+                                            <td>{{ $item->help->telephone }}</td>
+                                            <td>{{ $item->help->address }}</td>
                                             <td>
-                                                @if ($item->gender == 1)
-                                                    男
-                                                @elseif ($item->gender == 2)
-                                                    女
+                                                @if ($item->status == 1)
+                                                    待取货
+                                                @elseif ($item->status == 2)
+                                                    已发货
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->status == 1)
+                                                    <a href="#" class="btn-remarks" data-id="{{ $item->id }}" data-toggle="modal" data-target="#myModal" data-content="{{ $item->message }}">填写物流信息</a>
+                                                    <a href="#" class="confirm-btn" data-status="2" data-id="{{ $item->id }}">确认取件</a>
                                                 @else
-                                                    其他
-                                                @endif
-                                            </td>
-                                            <td>{{ $item->role->name }}</td>
-                                            <td>
-                                                @if ($item->status == 1)
-                                                    正常
-                                                @elseif ($item->status == 2)
-                                                    已禁用
-                                                @endif
-                                            </td>
-                                            <td>{{ $item->remarks or '-'}}</td>
-                                            <td>{{ $item->created_at }}</td>
-                                            <td>
-                                                <a href="/admin/user/detail?id={{ $item->id }}">查看详情</a>
-                                                <!-- Button trigger modal -->
-                                                <a href="#" class="btn-remarks" data-id="{{ $item->id }}" data-toggle="modal" data-target="#myModal" data-content="{{ $item->remarks }}">添加备注</a>
-                                                @if ($item->status == 1)
-                                                    <a href="javascript:" class="btn-status" data-status="2" data-id="{{ $item->id }}">禁用</a>
-                                                @elseif ($item->status == 2)
-                                                    <a href="javascript:" class="btn-status" data-status="1" data-id="{{ $item->id }}">启用</a>
+                                                    -
                                                 @endif
                                             </td>
                                         </tr>
@@ -126,7 +116,7 @@
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">添加备注</h4>
+                <h4 class="modal-title" id="myModalLabel">填写物流信息</h4>
             </div>
             <div class="modal-body">
                 <textarea id="remarks-textarea" class="form-control"></textarea>
@@ -175,14 +165,17 @@
                 info: '当前展示第 _START_ 到第 _END_ 条，共计 _TOTAL_ 条'
             },
             drawCallback: function() {
-                $('.btn-status').on('click', function() {
+                $('.btn-remarks').on('click', function () {
+                    $('#remarks-textarea').val($(this).attr('data-content'))
+                    $('#user-id').val($(this).attr('data-id'));
+                })
+
+                $('.confirm-btn').on('click', function() {
                     $.ajax({
-                        url: '/admin/user/status',
+                        url: '/admin/donate/confirm',
                         type: 'post',
                         data: $(this).data(),
                         success: function(data) {
-                            alert(data.message)
-
                             if (data.status === 1) {
                                 window.location.reload()
                             }
@@ -190,18 +183,13 @@
                     })
                 })
 
-                $('.btn-remarks').on('click', function () {
-                    $('#remarks-textarea').val($(this).attr('data-content'))
-                    $('#user-id').val($(this).attr('data-id'));
-                })
-
                 $('.save-remarks').on('click', function() {
                     $.ajax({
-                        url: '/admin/user/remarks',
+                        url: '/admin/donate/message',
                         type: 'post',
                         data: {
                             id: $('#user-id').val(),
-                            remarks: $('#remarks-textarea').val()
+                            message: $('#remarks-textarea').val()
                         },
                         success: function(data) {
                             alert(data.message)

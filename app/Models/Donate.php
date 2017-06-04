@@ -22,5 +22,11 @@ class Donate extends Model
 
     protected $guarded = [];
 
-        
+    public function user() {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
+    public function help() {
+        return $this->belongsTo('App\Models\Help', 'help_id');
+    }
 }
