@@ -55,7 +55,6 @@ class UserController extends Controller
     }
 
     public function userRemarks(Request $request) {
-        dd($this->user->update($request->id, ['remarks' => $request->remarks]));
         if ($this->user->update($request->id, ['remarks' => $request->remarks])) {
             return response()->json([
                 'status' => 1,
