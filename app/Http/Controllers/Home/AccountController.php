@@ -38,7 +38,10 @@ class AccountController extends Controller
             ]);
         }
 
-        if ($this->user->create($request->all())) {
+        $attribute = $request->all();
+        $attribute['password'] = md5($attribute['password']);
+
+        if ($this->user->create($attribute)) {
             return response()->json([
                 'status' => 1,
                 'message' => '注册成功，请登录'
@@ -50,5 +53,59 @@ class AccountController extends Controller
                 'message' => '注册失败，请稍后再试'
             ]);
         }
+    }
+
+    /**
+     * 登录页
+     *
+     * @return void
+     */
+    public function loginPage() {
+        return view('home.login');
+    }
+
+    /**
+     * 登录接口
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function login(Request $request) {
+        $user = $this->user->findWhereFirst(['telephone' => $request->telephone]);
+
+        if (!$user) {
+            return response()->json([
+                'status' => 2,
+                'message' => '用户不存在'
+            ]);
+        }
+
+        if ($user->role_id != 1) {
+            return response()->json([
+                'status' => 3,
+                'message' => '您无权登录该系统'
+            ]);
+        }
+
+        if ($user->status != 1) {
+            return response()->json([
+                'status' => 4,
+                'message' => '该账号已被禁用'
+            ]);
+        }
+
+        if ($user->password != md5($request->password)) {
+            return response()->json([
+                'status' => 6,
+                'message' => '用户名或密码不正确'
+            ]);
+        }
+
+        session(['user' => $user]);
+
+        return response()->json([
+            'status' => 1,
+            'message' => '登录成功'
+        ]);
     }
 }

@@ -26,6 +26,11 @@ Route::group(['prefix' => 'home', 'namespace' => 'Home'], function() {
      * 登录页面
      */
     Route::get('login', 'AccountController@loginPage');
+
+    /**
+     * 登录接口
+     */
+    Route::post('login', 'AccountController@login');
 });
 
 

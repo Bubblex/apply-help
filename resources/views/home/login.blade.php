@@ -17,7 +17,7 @@
                 <div class="login-content account-content">
                     <p>登录</p>
                     <input class="user" placeholder="手机号" name="username">
-                    <input class="pwd" placeholder="密码" name="userpwd">
+                    <input type="password" class="pwd" placeholder="密码" name="userpwd">
                     <a class="account-btn" id="login" href="javascript:">登录</a>
                     <a class="account-samll-btn" href="/home/register">注册</a>
                 </div>

@@ -18,15 +18,16 @@
     }
 
     $.ajax({
-      url: '',
-      type: "POST",
+      url: '/home/login',
+      type: 'POST',
 
       data: {
-        username: username,
-        userpwd: userpwd
+        telephone: username,
+        password: userpwd
       },
 
       success: function success(data) {
+        alert(data.message)
 
         if (data.status === 1) {
           window.location.href = '/';
