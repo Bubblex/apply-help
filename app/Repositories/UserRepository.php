@@ -63,7 +63,7 @@ class UserRepository
      * @return void
      */
     public function update($id, $update) {
-        $this->user->find($id)->update($update);
+        return $this->user->where('id', $id)->update($update);
     }
 
     /**
