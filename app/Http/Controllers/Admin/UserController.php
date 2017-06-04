@@ -26,6 +26,12 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * 改变用户状态接口
+     *
+     * @param Request $request
+     * @return void
+     */
     public function userStatus(Request $request) {
         $this->user->update($request->id, [
             'status' => $request->status
@@ -34,6 +40,17 @@ class UserController extends Controller
         return response()->json([
             'status' => 1,
             'message' => $request->status == 1 ? '启用用户成功' : '禁用用户成功'
+        ]);
+    }
+
+    /**
+     * 用户详情页
+     *
+     * @return void
+     */
+    public function userDetailPage(Request $request) {
+        return view('admin.user-detail')->with([
+            'user' => $this->user->find($request->id)
         ]);
     }
 }

@@ -55,4 +55,16 @@ class UserRepository
     public function update($id, $update) {
         $this->user->find($id)->update($update);
     }
+
+    /**
+     * 根据 id 查询用户
+     *
+     * @param [type] $id
+     * @param array $columns
+     * @param array $with
+     * @return void
+     */
+    public function find($id, $columns = ['*']) {
+        return $this->user->select($columns)->find($id);
+    }
 }

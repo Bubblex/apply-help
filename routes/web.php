@@ -45,6 +45,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
              * 禁用 / 启用用户
              */
             Route::post('status', 'UserController@userStatus');
+
+            /**
+             * 用户详情页
+             */
+            Route::get('detail', 'UserController@userDetailPage');
         });
 
         Route::group(['prefix' => 'help'], function() {

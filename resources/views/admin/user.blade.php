@@ -99,6 +99,7 @@
                                             </td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
+                                                <a href="/admin/user/detail?id={{ $item->id }}">查看详情</a>
                                                 @if ($item->status == 1)
                                                     <a href="javascript:" class="btn-status" data-status="2" data-id="{{ $item->id }}">禁用</a>
                                                 @elseif ($item->status == 2)
