@@ -46,6 +46,16 @@ class UserRepository
     }
 
     /**
+     * 创建一条数据
+     *
+     * @param [type] $attributes
+     * @return void
+     */
+    public function create($attributes) {
+        return User::create($attributes);
+    }
+
+    /**
      * 根据 id 更新单条数据
      *
      * @param [type] $id

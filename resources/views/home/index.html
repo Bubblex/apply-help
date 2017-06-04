@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>firekeeper-simple</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link rel="stylesheet" href="/resource/style/app.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="row header-account">
+            <div class="col-6">
+                <p>微助</p>
+            </div>
+            <div class="col-10">
+                <input class="header-input" placeholder="搜索你想捐助的物品">
+            </div>
+            <div class="col-3">
+                <a class="header-search" href="javascript:">搜索</a>
+            </div>
+            <div class="col-5">
+                <!--  .has-login -->
+                <!--    a(href="/home/myinfo") 我的信息 |-->
+                <!--    a.header-exit(href="/home/login") 退出-->
+                <div class="no-login">
+                    <a href="/home/login">登录 |</a>
+                    <a href="/home/register">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav">
+        <div class="main-container">
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <a class="active" href="/home/index">首页</a>
+                </div>
+                <div class="col-4">
+                    <a href="/home/applyhelp">申请帮助</a>
+                </div>
+                <div class="col-4">
+                    <a href="/home/helphistory">捐助查询</a>
+                </div>
+                <div class="col-4">
+                    <a href="javascript:">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BEGIN banner -->
+    <div class="main-container">
+        <div class="index-banner">
+            <div class="row">
+                <div class="col-8 offset-8">
+                    <p>历史捐助物品数</p>
+                    <div class="account">
+                        <span class="account-thing"> 11111 </span>件</div>
+                </div>
+                <div class="col-6">
+                    <p>历史捐助人数</p>
+                    <div class="account">
+                        <span class="account-people"> 11111 </span>人</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END banner-->
+    <!-- BEGIN 帮助列表-->
+    <div class="main-container">
+        <div class="need-help-list">
+            <div class="need-help-item">
+                <div class="row">
+                    <div class="col-8">
+                        <img src="/resource/image/banner.png">
+                    </div>
+                    <div class="col-16">
+                        <p class="summary">一个帮助，让贫困女童继续求学梦想。女童是弱势群体中的弱势；今天的女童，将成为明天的母亲，帮助一名贫困女童，不仅是帮助一个人，而是帮助至少一代人。从传统的项目执行到前沿的公益创投、影响力投资，王兵的布阵越来越大，下一步，他要为行业再造新生。
+                            <a href="/home/applydetail">详情</a>
+                        </p>
+                        <p class="type">书包</p>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>0人帮助</p>
+                            </div>
+                            <div class="col-4 offset-16">
+                                <a class="help" href="javascript:">帮助</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="need-help-item">
+                <div class="row">
+                    <div class="col-8">
+                        <img src="/resource/image/banner.png">
+                    </div>
+                    <div class="col-16">
+                        <p class="summary">一个帮助，让贫困女童继续求学梦想。女童是弱势群体中的弱势；今天的女童，将成为明天的母亲，帮助一名贫困女童，不仅是帮助一个人，而是帮助至少一代人。从传统的项目执行到前沿的公益创投、影响力投资，王兵的布阵越来越大，下一步，他要为行业再造新生。
+                            <a href="/home/applydetail">详情</a>
+                        </p>
+                        <p class="type">书包</p>
+                        <div class="row">
+                            <div class="col-4">
+                                <p>0人帮助</p>
+                            </div>
+                            <div class="col-4 offset-16">
+                                <a class="help" href="javascript:">帮助</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  分页-->
+        <div class="pageContent">
+            <div class="page">
+                <input id="totalCount" type="hidden" value="2">
+                <input id="page" type="hidden" value="2">
+                <input id="pageCount" type="hidden" value="4">
+                <ul id="webPagination"></ul>
+            </div>
+        </div>
+    </div>
+    <!-- END 帮助列表-->
+    <script src="/resource/vendor/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/resource/vendor/pagination/jquery.pagination.js"></script>
+    <script src="/resource/script/app.babel.js"></script>
+    <script src="/resource/script/index.babel.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>firekeeper-simple</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link rel="stylesheet" href="/resource/style/app.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="row header-account">
+            <div class="col-6">
+                <p>微助</p>
+            </div>
+            <div class="col-10">
+                <input class="header-input" placeholder="搜索你想捐助的物品">
+            </div>
+            <div class="col-3">
+                <a class="header-search" href="javascript:">搜索</a>
+            </div>
+            <div class="col-5">
+                <!--  .has-login -->
+                <!--    a(href="/home/myinfo") 我的信息 |-->
+                <!--    a.header-exit(href="/home/login") 退出-->
+                <div class="no-login">
+                    <a href="/home/login">登录 |</a>
+                    <a href="/home/register">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-nav">
+        <div class="main-container">
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <a class="active" href="/home/index">首页</a>
+                </div>
+                <div class="col-4">
+                    <a href="/home/applyhelp">申请帮助</a>
+                </div>
+                <div class="col-4">
+                    <a href="/home/helphistory">捐助查询</a>
+                </div>
+                <div class="col-4">
+                    <a href="javascript:">关于我们</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- BEGIN 受助申请详情-->
+    <div class="main-container apply-detail">
+        <div class="col-12">
+            <img src="/resource/image/banner.png">
+        </div>
+        <div class="col-12">
+            <p>受助人姓名</p>
+            <p>一个帮助，让贫困女童继续求学梦想。女童是弱势群体中的弱势；今天的女童，将成为明天的母亲，帮助一名贫困女童，不仅是帮助一个人，而是帮助至少一代人。从传统的项目执行到前沿的公益创投、影响力投资，王兵的布阵越来越大，下一步，他要为行业再造新生。</p>
+            <p class="type">物品</p>
+            <div class="col-3">
+                <p>0人帮助</p>
+            </div>
+            <div class="col-3 offset-18">
+                <a id="confirm-info" href="javascript:">帮助</a>
+            </div>
+        </div>
+    </div>
+    <!-- END 受助申请详情-->
+    <!-- BEGIN 确认捐助弹框-->
+    <div class="layer-container">
+        <div class="layer-confirm-help">
+            <h2>确认信息</h2>
+            <div class="row confirm-row">
+                <div class="col-7">
+                    <p class="title">捐助的物品：</p>
+                </div>
+                <div class="col-17">
+                    <p>222</p>
+                </div>
+            </div>
+            <div class="row confirm-row">
+                <div class="col-7">
+                    <p class="title"> 您的姓名：</p>
+                </div>
+                <div class="col-17">
+                    <p> aa</p>
+                </div>
+            </div>
+            <div class="row confirm-row">
+                <div class="col-7">
+                    <p class="title"> 您的联系方式：</p>
+                </div>
+                <div class="col-17">
+                    <p>15156465</p>
+                </div>
+            </div>
+            <div class="row confirm-row">
+                <div class="col-7">
+                    <p class="title"> 您的地址：</p>
+                </div>
+                <div class="col-17">
+                    <p>河北省石家庄市藁城市222</p>
+                </div>
+            </div>
+            <p class="confirm-thanks">感谢您的爱心，工作人员讲在2个工作日内去上述地址取件，请耐心等候~</p>
+            <div class="row">
+                <div class="col-12">
+                    <a id="confirm-help" href="javascript:">确认帮助</a>
+                </div>
+                <div class="col-12">
+                    <a id="cancle-help" href="javascript:">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END 确认捐助弹框-->
+    <script src="/resource/vendor/jquery/jquery-3.1.1.min.js"></script>
+    <script src="/resource/script/app.babel.js"></script>
+    <script src="/resource/script/applydetail.babel.js"></script>
+</body>
+</html>

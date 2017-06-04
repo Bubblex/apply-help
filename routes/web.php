@@ -11,9 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['prefix' => 'home', 'namespace' => 'Home'], function() {
+    /**
+     * 注册页面
+     */
+    Route::get('register', 'AccountController@registerPage');
+
+    /**
+     * 注册接口
+     */
+    Route::post('register', 'AccountController@register');
+
+    /**
+     * 登录页面
+     */
+    Route::get('login', 'AccountController@loginPage');
 });
+
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     /**

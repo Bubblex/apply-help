@@ -1,0 +1,17 @@
+'use strict';
+
+(function ($) {
+
+  // 初始化分页
+  var count = parseInt($('#totalCount').val());
+  var page = parseInt($('#page').val()) - 1;
+  var pageCount = parseInt($('#pageCount').val());
+  var opts = {
+    current_page: page,
+    items_per_page: pageCount
+  };
+
+  //传入总条数
+  $("#webPagination").pagination(count, opts);
+})(jQuery);
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImhlbHBoaXN0b3J5LmJhYmVsLmpzIl0sIm5hbWVzIjpbIiQiLCJjb3VudCIsInBhcnNlSW50IiwidmFsIiwicGFnZSIsInBhZ2VDb3VudCIsIm9wdHMiLCJjdXJyZW50X3BhZ2UiLCJpdGVtc19wZXJfcGFnZSIsInBhZ2luYXRpb24iLCJqUXVlcnkiXSwibWFwcGluZ3MiOiI7O0FBQ0EsQ0FBQyxVQUFTQSxDQUFULEVBQVc7O0FBRVY7QUFDQSxNQUFNQyxRQUFTQyxTQUFTRixFQUFFLGFBQUYsRUFBaUJHLEdBQWpCLEVBQVQsQ0FBZjtBQUNBLE1BQU1DLE9BQU9GLFNBQVNGLEVBQUUsT0FBRixFQUFXRyxHQUFYLEVBQVQsSUFBMkIsQ0FBeEM7QUFDQSxNQUFNRSxZQUFZSCxTQUFTRixFQUFFLFlBQUYsRUFBZ0JHLEdBQWhCLEVBQVQsQ0FBbEI7QUFDQSxNQUFNRyxPQUFPO0FBQ1RDLGtCQUFhSCxJQURKO0FBRVRJLG9CQUFlSDtBQUZOLEdBQWI7O0FBS0E7QUFDQUwsSUFBRSxnQkFBRixFQUFvQlMsVUFBcEIsQ0FBK0JSLEtBQS9CLEVBQXFDSyxJQUFyQztBQUNELENBYkQsRUFhR0ksTUFiSCIsImZpbGUiOiJoZWxwaGlzdG9yeS5iYWJlbC5qcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4oZnVuY3Rpb24oJCl7XHJcblxyXG4gIC8vIOWIneWni+WMluWIhumhtVxyXG4gIGNvbnN0IGNvdW50ID0gIHBhcnNlSW50KCQoJyN0b3RhbENvdW50JykudmFsKCkpIDtcclxuICBjb25zdCBwYWdlID0gcGFyc2VJbnQoJCgnI3BhZ2UnKS52YWwoKSktMTtcclxuICBjb25zdCBwYWdlQ291bnQgPSBwYXJzZUludCgkKCcjcGFnZUNvdW50JykudmFsKCkpXHJcbiAgY29uc3Qgb3B0cyA9IHtcclxuICAgICAgY3VycmVudF9wYWdlOnBhZ2UsXHJcbiAgICAgIGl0ZW1zX3Blcl9wYWdlOnBhZ2VDb3VudFxyXG4gIH1cclxuXHJcbiAgLy/kvKDlhaXmgLvmnaHmlbBcclxuICAkKFwiI3dlYlBhZ2luYXRpb25cIikucGFnaW5hdGlvbihjb3VudCxvcHRzKVxyXG59KShqUXVlcnkpO1xyXG5cclxuXHJcbiJdfQ==
