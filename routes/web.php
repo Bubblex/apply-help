@@ -57,6 +57,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
              * 修改申请状态
              */
             Route::post('status', 'HelpController@helpStatus');
+
+            /**
+             * 申请帮助详情页
+             */
+            Route::get('detail', 'HelpController@helpDetailPage');
         });
     });
 });

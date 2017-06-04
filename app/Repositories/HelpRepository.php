@@ -24,6 +24,18 @@ class HelpRepository
     }
 
     /**
+     * 根据 id 获取帮助详情
+     *
+     * @param [type] $id
+     * @param array $columns
+     * @param array $with
+     * @return void
+     */
+    public function find($id, $columns = ['*'], $with = []) {
+        return $this->help->with($with)->select($columns)->find($id);
+    }
+
+    /**
      * 根据 id 更新数据
      *
      * @param [type] $id

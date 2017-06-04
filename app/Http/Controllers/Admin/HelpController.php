@@ -37,4 +37,10 @@ class HelpController extends Controller
             'status' => $request->status
         ]);
     }
+
+    public function helpDetailPage(Request $request) {
+        return view('admin.help-detail')->with([
+            'help' => $this->help->find($request->id),
+        ]);
+    }
 }

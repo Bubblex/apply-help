@@ -84,7 +84,7 @@
                                                     其他
                                                 @endif
                                             </td>
-                                            <td>{{ $item->id_card }}</td>
+                                            <td>{{ $item->id_number }}</td>
                                             <td>{{ $item->telephone }}</td>
                                             <td>{{ $item->needed }}</td>
                                             <td>{{ $item->needed_num }}</td>
@@ -101,7 +101,7 @@
                                             </td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
-                                                <a href="javascript:">查看详情</a>
+                                                <a href="/admin/help/detail?id={{ $item->id }}">查看详情</a>
                                                 @if ($item->status == 2)
                                                     <a href="javascript:" class="review-btn" data-status="1" data-id="{{ $item->id }}">通过</a>
                                                     <a href="javascript:" class="review-btn" data-status="3" data-id="{{ $item->id }}">驳回</a>
