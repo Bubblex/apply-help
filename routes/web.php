@@ -28,7 +28,15 @@ Route::group(['namespace' => 'Home'], function() {
          * 必须登录
          */
         Route::group(['middleware' => 'auth'], function() {
+            /**
+             * 我的信息页
+             */
             Route::get('myinfo', 'HomeController@myInfoPage');
+
+            /**
+             * 更新我的信息
+             */
+            Route::post('myinfo/update', 'HomeController@updateMyInfo');
         });
     });
 });

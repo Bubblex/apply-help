@@ -36,7 +36,8 @@
                     <p>手机号</p>
                 </div>
                 <div class="col-19">
-                    <input class="user" value="{{ $user->telephone }}" placeholder="请输入手机号" name="username">
+                    <input type="hidden" name="apply_id" value="{{ $user->id }}">
+                    <input class="user" value="{{ $user->telephone }}" disabled style="border: none; font-size: 14px" placeholder="请输入手机号" name="username">
                     <p class="show">{{ $user->telephone }}</p>
                 </div>
             </div>

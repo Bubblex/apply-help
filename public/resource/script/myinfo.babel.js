@@ -12,12 +12,47 @@
   });
 
   $('#confirm-change').on('click', function () {
+    var apply_id = $("input[name='apply_id']").val();
+    var username = $("input[name='username']").val();
+    var name = $("input[name='name']").val();
+    var school = $("input[name='school']").val();
+    var room = $("input[name='room']").val();
+    var detailaddr = $("input[name='detailaddr']").val();
+
+    if (username === '') {
+      alert('请输入手机号');
+      return;
+    } else if (/^1[0-9]{10}$/.test(username) === false) {
+      alert('手机号格式不正确');
+      return;
+    } else if (name === '') {
+      alert('请输入姓名');
+      return;
+    } else if (school === '') {
+      alert('请输入学校');
+      return;
+    } else if (room === '') {
+      alert('请输入宿舍');
+      return;
+    } else if (detailaddr === '') {
+      alert('请输入详细地址');
+      return;
+    } else if (detailaddr.length < 5) {
+      alert('详细地址长度少于5个字');
+      return;
+    }
+
     $.ajax({
-      url: '',
-      type: "POST",
+      url: '/home/myinfo/update',
+      type: 'post',
 
       data: {
-        apply_id: apply_id
+        id: apply_id,
+        name: name,
+        school: school,
+        dorm: room,
+        telephone: username,
+        address: detailaddr
       },
 
       success: function success(data) {
