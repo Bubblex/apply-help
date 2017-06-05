@@ -11,7 +11,20 @@
 |
 */
 
-Route::get('', 'Home\HomeController@homePage');
+
+Route::group(['namespace' => 'Home'], function() {
+    /**
+     * 首页
+     */
+    Route::get('', 'HomeController@homePage');
+
+    Route::group(['prefix' => 'home'], function() {
+        /**
+         * 帮助详情页
+         */
+        Route::get('applydetail', 'HomeController@applyDetailPage');
+    });
+});
 
 Route::group(['prefix' => 'home', 'namespace' => 'Home'], function() {
     /**

@@ -8,28 +8,7 @@
     <link rel="stylesheet" href="/resource/style/app.css">
 </head>
 <body>
-    <div class="main-container">
-        <div class="row header-account">
-            <div class="col-6">
-                <p>微助</p>
-            </div>
-            <div class="col-10">
-                <input class="header-input" placeholder="搜索你想捐助的物品">
-            </div>
-            <div class="col-3">
-                <a class="header-search" href="javascript:">搜索</a>
-            </div>
-            <div class="col-5">
-                <!--  .has-login -->
-                <!--    a(href="/home/myinfo") 我的信息 |-->
-                <!--    a.header-exit(href="/home/login") 退出-->
-                <div class="no-login">
-                    <a href="/home/login">登录 |</a>
-                    <a href="/home/register">注册</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('home.master.header')
     <div class="header-nav">
         <div class="main-container">
             <div class="row">
@@ -51,14 +30,14 @@
     <!-- BEGIN 受助申请详情-->
     <div class="main-container apply-detail">
         <div class="col-12">
-            <img src="/resource/image/banner.png">
+            <img src="{{ $help->image }}">
         </div>
         <div class="col-12">
-            <p>受助人姓名</p>
-            <p>一个帮助，让贫困女童继续求学梦想。女童是弱势群体中的弱势；今天的女童，将成为明天的母亲，帮助一名贫困女童，不仅是帮助一个人，而是帮助至少一代人。从传统的项目执行到前沿的公益创投、影响力投资，王兵的布阵越来越大，下一步，他要为行业再造新生。</p>
-            <p class="type">物品</p>
+            <p>{{ $help->name }}</p>
+            <p>{{ $help->summary }}</p>
+            <p class="type">{{ $help->needed }}</p>
             <div class="col-3">
-                <p>0人帮助</p>
+                <p>{{ count($help->donates) }}人帮助</p>
             </div>
             <div class="col-3 offset-18">
                 <a id="confirm-info" href="javascript:">帮助</a>
