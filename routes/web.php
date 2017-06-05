@@ -23,6 +23,13 @@ Route::group(['namespace' => 'Home'], function() {
          * 帮助详情页
          */
         Route::get('applydetail', 'HomeController@applyDetailPage');
+
+        /**
+         * 必须登录
+         */
+        Route::group(['middleware' => 'auth'], function() {
+            Route::get('myinfo', 'HomeController@myInfoPage');
+        });
     });
 });
 

@@ -41,4 +41,10 @@ class HomeController extends Controller
             'help' => $this->help->find($request->id)
         ]);
     }
+
+    public function myInfoPage() {
+        return view('home.myinfo')->with([
+            'user' => session('user')
+        ]);
+    }
 }

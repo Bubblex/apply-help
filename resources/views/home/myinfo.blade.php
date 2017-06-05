@@ -8,28 +8,7 @@
     <link rel="stylesheet" href="/resource/style/app.css">
 </head>
 <body>
-    <div class="main-container">
-        <div class="row header-account">
-            <div class="col-6">
-                <p>微助</p>
-            </div>
-            <div class="col-10">
-                <input class="header-input" placeholder="搜索你想捐助的物品">
-            </div>
-            <div class="col-3">
-                <a class="header-search" href="javascript:">搜索</a>
-            </div>
-            <div class="col-5">
-                <!--  .has-login -->
-                <!--    a(href="/home/myinfo") 我的信息 |-->
-                <!--    a.header-exit(href="/home/login") 退出-->
-                <div class="no-login">
-                    <a href="/home/login">登录 |</a>
-                    <a href="/home/register">注册</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('home.master.header')
     <div class="header-nav">
         <div class="main-container">
             <div class="row">
@@ -57,8 +36,8 @@
                     <p>手机号</p>
                 </div>
                 <div class="col-19">
-                    <input class="user" placeholder="请输入手机号" name="username">
-                    <p class="show">15552</p>
+                    <input class="user" value="{{ $user->telephone }}" placeholder="请输入手机号" name="username">
+                    <p class="show">{{ $user->telephone }}</p>
                 </div>
             </div>
             <div class="row account-row">
@@ -66,8 +45,8 @@
                     <p>姓名</p>
                 </div>
                 <div class="col-19">
-                    <input class="pwd" placeholder="请输入姓名" name="userpwd">
-                    <p class="show">齐坤丽</p>
+                    <input class="pwd" value="{{ $user->name }}" placeholder="请输入姓名" name="userpwd">
+                    <p class="show">{{ $user->name }}</p>
                 </div>
             </div>
             <div class="account-spilt">取件地址（便于捐助时，工作人员取件）</div>
@@ -76,8 +55,8 @@
                     <p>学校</p>
                 </div>
                 <div class="col-19">
-                    <input class="pwd" placeholder="请输入学校" name="school">
-                    <p class="show">华北理工大学</p>
+                    <input class="pwd" value="{{ $user->school }}" placeholder="请输入学校" name="school">
+                    <p class="show">{{ $user->school }}</p>
                 </div>
             </div>
             <div class="row account-row">
@@ -85,8 +64,8 @@
                     <p>宿舍楼</p>
                 </div>
                 <div class="col-19">
-                    <input class="pwd" placeholder="请输入宿舍楼" name="room">
-                    <p class="show">A座</p>
+                    <input class="pwd" value="{{ $user->dorm }}" placeholder="请输入宿舍楼" name="room">
+                    <p class="show">{{ $user->dorm }}</p>
                 </div>
             </div>
             <div class="row account-row">
@@ -94,8 +73,8 @@
                     <p>详细地址</p>
                 </div>
                 <div class="col-19">
-                    <input class="pwd" placeholder="请输入详细地址(最少5个字)" name="detailaddr">
-                    <p class="show">228</p>
+                    <input class="pwd" value="{{ $user->address }}" placeholder="请输入详细地址(最少5个字)" name="detailaddr">
+                    <p class="show">{{ $user->address }}</p>
                 </div>
             </div>
             <a class="account-btn" id="change-myinfo" href="javascript:">修改</a>
