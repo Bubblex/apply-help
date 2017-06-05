@@ -47,6 +47,11 @@ Route::group(['namespace' => 'Home'], function() {
              * 更新我的信息
              */
             Route::post('myinfo/update', 'HomeController@updateMyInfo');
+
+            /**
+             * 添加帮助
+             */
+            Route::post('help/add', 'HomeController@addHelp');
         });
     });
 });

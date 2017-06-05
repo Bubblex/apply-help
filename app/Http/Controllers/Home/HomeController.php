@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+// use Intervention\Image\ImageManagerStatic as Image;
 
 use App\Repositories\HelpRepository as Help;
 use App\Repositories\UserRepository as User;
@@ -100,9 +101,45 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * 申请帮助页
+     *
+     * @return void
+     */
     public function applyHelpPage() {
         return view('Home.applyhelp')->with([
             'goodsType' => $this->goodsType->all()
         ]);
+    }
+
+    /**
+     * 申请帮助接口
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function addHelp(Request $request) {
+        $attribute = $request->all();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $request->file('image')->store('/uploads');
+            // $filePath = 'uploads/'.time().'.'.$image->getClientOriginalExtension();
+            // Image::make($image)->save($filePath);
+            $attribute['image'] = '/'.$path;
+        }
+
+        if ($this->help->create($attribute)) {
+            return response()->json([
+                'status' => 1,
+                'message' => '申请成功',
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '申请失败',
+            ]);
+        }
     }
 }

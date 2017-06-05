@@ -58,6 +58,16 @@ class HelpRepository
     }
 
     /**
+     * 添加数据
+     *
+     * @param [type] $attribute
+     * @return void
+     */
+    public function create($attribute) {
+        return Help::create($attribute);
+    }
+
+    /**
      * 分页查询
      *
      * @param array $where

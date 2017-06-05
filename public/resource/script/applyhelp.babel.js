@@ -39,7 +39,7 @@
 
     var value = $thingtype.val()
 
-    if (value === '其他') {
+    if (value === '-1') {
       $thingtype.show();
       $thing.hide()
       $other.show();
@@ -84,15 +84,15 @@
       sex: $("input[name='sex']:checked").val(),
       idnumber: $("input[name='idnumber']").val(),
       phone: $("input[name='phone']").val(),
-      thing: $("select[name='thing']").val() === '其他' ? $("input[name='other']").val() : $("select[name='thing']").val(),
+      thing: $("select[name='thing']").val() === '-1' ? $("input[name='other']").val() : $("select[name='thing']").val(),
       number: $("input[name='number']").val(),
       summary: $("textarea[name='summary']").val(),
       photo: $("input[name='photo']").val(),
       city: $("input[name='city']").val(),
       route: $("input[name='route']").val(),
-      detailadr: $("textarea[name='detailadr']").val()
+      detailadr: $("textarea[name='detailadr']").val(),
+      image: $("[name='image']").prop("files")
     };
-    console.log(applyhelpinfo);
 
     var username = applyhelpinfo.username,
         sex = applyhelpinfo.sex,
@@ -104,8 +104,8 @@
         photo = applyhelpinfo.photo,
         city = applyhelpinfo.city,
         route = applyhelpinfo.route,
-        detailadr = applyhelpinfo.detailadr;
-
+        detailadr = applyhelpinfo.detailadr,
+        image = applyhelpinfo.image;
 
     if (username === '') {
       alert('请输入真实姓名');
@@ -119,7 +119,7 @@
     } else if (/^1[0-9]{10}$/.test(phone) === false) {
       alert('手机号格式不正确');
       return;
-    } else if (thing === '') {
+    } else if (thing === '' || thing === '-1' || thing === '-2') {
       alert('请输入物品');
       return;
     } else if (summary === '') {
@@ -134,26 +134,30 @@
     } else if (detailadr === '') {
       alert('请输入详细地址');
       return;
+    } else if (image.length === 0) {
+      alert('请上传图片')
+      return
     }
 
+    var data = new FormData();
+    data.append("name", username);
+    data.append("summary", summary);
+    data.append("gender", sex);
+    data.append("telephone", phone);
+    data.append("id_number", idnumber);
+    data.append("needed", thing);
+    data.append("needed_num", number);
+    data.append("image", image[0]);
+    data.append("province", city);
+    data.append("street", route);
+    data.append("address", detailadr);
+
     $.ajax({
-      url: '',
-      type: "POST",
-
-      data: {
-        username: username,
-        sex: sex,
-        idnumber: idnumber,
-        phone: phone,
-        thing: thing,
-        number: number,
-        summary: summary,
-        photo: photo,
-        city: city,
-        route: route,
-        detailadr: detailadr
-      },
-
+      url: '/home/help/add',
+      type: 'post',
+      data: data,
+      contentType: false,
+			processData: false,
       success: function success(data) {
         if (data.status === 1) {
           window.location.href = '/home/applyhistory';

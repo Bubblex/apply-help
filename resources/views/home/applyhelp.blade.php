@@ -88,16 +88,16 @@
                     </div>
                     <div class="col-6">
                         <select name="thingtype">
-                            <option>请选择</option>
+                            <option value="-1">请选择</option>
                             @foreach ($goodsType as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
-                            <option>其他</option>
+                            <option value="-2">其他</option>
                         </select>
                     </div>
                     <div class="col-6 offset-1">
                         <select name="thing">
-                            <option>请选择</option>
+                            <option value="-1">请选择</option>
                         </select>
                     </div>
                     <div class="col-6 offset-1">
@@ -132,7 +132,7 @@
                             <span>*</span>上传照片</p>
                     </div>
                     <div class="col-5">
-                        <input type="file" name="photo">
+                        <input type="file" name="image">
                     </div>
                 </div>
                 <!-- END 情况简介-->
