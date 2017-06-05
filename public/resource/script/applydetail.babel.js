@@ -7,14 +7,14 @@
 
   $('#confirm-help').on('click', function () {
     $.ajax({
-      url: '',
-      type: "POST",
-
+      url: '/home/confirm/donate',
+      type: 'post',
       data: {
-        apply_id: apply_id
+        id: $('input[name="id"]').val()
       },
-
       success: function success(data) {
+        alert(data.message)
+
         if (data.status === 1) {
           window.location.href = '/home/helphistory';
         }

@@ -142,4 +142,44 @@ class HomeController extends Controller
             ]);
         }
     }
+
+    /**
+     * 确认捐助
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function confirmDonate(Request $request) {
+        if (!session('user')) {
+            return response()->json([
+                'status' => 3,
+                'message' => '请先登录',
+            ]);
+        }
+
+        $result = $this->donate->create([
+            'help_id' => $request->id,
+            'user_id' => session('user')->id,
+            'status' => 1
+        ]);
+
+        if ($result) {
+            return response()->json([
+                'status' => 1,
+                'message' => '帮助成功',
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '帮助失败',
+            ]);
+        }
+    }
+
+    public function helpHistory() {
+        return view('home.helphistory')->with([
+            'donates' => $this->donate->paginate([['user_id', session('user')->id]])
+        ]);
+    }
 }

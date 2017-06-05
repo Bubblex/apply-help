@@ -52,6 +52,21 @@ Route::group(['namespace' => 'Home'], function() {
              * 添加帮助
              */
             Route::post('help/add', 'HomeController@addHelp');
+
+            /**
+             * 确认捐助
+             */
+            Route::post('confirm/donate', 'HomeController@confirmDonate');
+
+            /**
+             * 捐物历史
+             */
+            Route::get('helphistory', 'HomeController@helpHistory');
+
+            /**
+             * 历史申请
+             */
+            Route::get('applyhistory', 'HomeController@applyHistory');
         });
     });
 });

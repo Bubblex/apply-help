@@ -13,7 +13,7 @@
         <div class="main-container">
             <div class="row">
                 <div class="col-4 offset-4">
-                    <a class="active" href="/home/index">首页</a>
+                    <a class="active" href="/">首页</a>
                 </div>
                 <div class="col-4">
                     <a href="/home/applyhelp">申请帮助</a>
@@ -46,6 +46,7 @@
     </div>
     <!-- END 受助申请详情-->
     <!-- BEGIN 确认捐助弹框-->
+    <input type="hidden" name="id" value="{{ $help->id }}">
     <div class="layer-container">
         <div class="layer-confirm-help">
             <h2>确认信息</h2>

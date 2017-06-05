@@ -28,4 +28,12 @@ class DonateRepository
     public function getCountByHelp() {
         return $this->donate->where('status', 2)->count();
     }
+
+    public function create($attribute) {
+        return Donate::create($attribute);
+    }
+
+    public function paginate($where = [], $columns = ['*']) {
+        return $this->donate->where($where)->select($columns)->paginate();
+    }
 }

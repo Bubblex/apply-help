@@ -13,7 +13,7 @@
         <div class="main-container">
             <div class="row">
                 <div class="col-4 offset-4">
-                    <a class="active" href="/home/index">首页</a>
+                    <a class="active" href="/">首页</a>
                 </div>
                 <div class="col-4">
                     <a href="/home/applyhelp">申请帮助</a>
