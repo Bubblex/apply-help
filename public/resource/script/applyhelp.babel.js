@@ -43,10 +43,25 @@
       $thingtype.show();
       $thing.hide()
       $other.show();
+      return
     } else {
       $thing.show()
       $other.hide();
     }
+
+    $.ajax({
+      url: '/home/goods',
+      type: 'post',
+      data: {
+        id: value,
+      },
+      success: function(data) {
+        $thing.empty()
+        for (let i = 0; i < data.goods.length; i++) {
+          $thing.append('<option value="' + data.goods[i].id + '">' + data.goods[i].name + '</option>')
+        }
+      }
+    })
   });
 
   $("select[name='thing']").on('change', function () {

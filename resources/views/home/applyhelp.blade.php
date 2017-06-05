@@ -88,6 +88,7 @@
                     </div>
                     <div class="col-6">
                         <select name="thingtype">
+                            <option>请选择</option>
                             @foreach ($goodsType as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
@@ -96,7 +97,7 @@
                     </div>
                     <div class="col-6 offset-1">
                         <select name="thing">
-                            <option>学习用品</option>
+                            <option>请选择</option>
                         </select>
                     </div>
                     <div class="col-6 offset-1">

@@ -30,6 +30,11 @@ Route::group(['namespace' => 'Home'], function() {
         Route::get('applyhelp', 'HomeController@applyHelpPage');
 
         /**
+         * 获取商品列表接口
+         */
+        Route::post('goods', 'HomeController@goodsList');
+
+        /**
          * 必须登录
          */
         Route::group(['middleware' => 'auth'], function() {

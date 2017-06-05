@@ -86,6 +86,20 @@ class HomeController extends Controller
         }
     }
 
+    /**
+     * 商品列表接口
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function goodsList(Request $request) {
+        return response()->json([
+            'status' => 1,
+            'message' => '请求成功',
+            'goods' => $this->goods->findWhere([['goods_type_id', $request->id]])
+        ]);
+    }
+
     public function applyHelpPage() {
         return view('Home.applyhelp')->with([
             'goodsType' => $this->goodsType->all()
