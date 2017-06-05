@@ -7,18 +7,24 @@ use App\Http\Controllers\Controller;
 
 use App\Repositories\HelpRepository as Help;
 use App\Repositories\UserRepository as User;
-use App\Repositories\DonateRepository as donate;
+use App\Repositories\DonateRepository as Donate;
+use App\Repositories\GoodsTypeRepository as GoodsType;
+use App\Repositories\GoodsRepository as Goods;
 
 class HomeController extends Controller
 {
     protected $user;
     protected $help;
     protected $donate;
+    protected $goods;
+    protected $goodsType;
 
-    public function __construct(Help $help, Donate $donate, User $user) {
+    public function __construct(Help $help, Donate $donate, User $user, GoodsType $goodsType, Goods $goods) {
         $this->user = $user;
         $this->help = $help;
         $this->donate = $donate;
+        $this->goods = $goods;
+        $this->goodsType = $goodsType;
     }
 
     /**
@@ -78,5 +84,11 @@ class HomeController extends Controller
                 'message' => '修改失败',
             ]);
         }
+    }
+
+    public function applyHelpPage() {
+        return view('Home.applyhelp')->with([
+            'goodsType' => $this->goodsType->all()
+        ]);
     }
 }

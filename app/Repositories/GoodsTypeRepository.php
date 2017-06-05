@@ -11,4 +11,8 @@ class GoodsTypeRepository
     public function __construct(GoodsType $goodsType) {
         $this->goodsType = $goodsType;
     }
+
+    public function all() {
+        return $this->goodsType->get();
+    }
 }

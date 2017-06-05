@@ -19,5 +19,7 @@ class GoodsType extends Model
 
     protected $guarded = [];
 
-        
+    public function good() {
+        return $this->hasMany('App\Models\Goods', 'goods_type_id');
+    }
 }

@@ -108,4 +108,14 @@ class AccountController extends Controller
             'message' => '登录成功'
         ]);
     }
+
+    /**
+     * 退出登录
+     *
+     * @return void
+     */
+    public function logout() {
+        session()->forget('user');
+        return redirect('/home/login');
+    }
 }

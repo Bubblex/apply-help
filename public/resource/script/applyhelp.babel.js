@@ -32,18 +32,35 @@
 
   $("body").plusready();
 
-  $("select[name='thing']").on('change', function () {
+  $("select[name='thingtype']").on('change', function () {
     var $thingtype = $("select[name='thingtype']"),
         $thing = $("select[name='thing']"),
         $other = $("input[name='other']");
 
-    if ($($thing).val() === '其他') {
-      $other.show();
-      $thingtype.hide();
-    } else {
+    var value = $thingtype.val()
+
+    if (value === '其他') {
       $thingtype.show();
+      $thing.hide()
+      $other.show();
+    } else {
+      $thing.show()
       $other.hide();
     }
+  });
+
+  $("select[name='thing']").on('change', function () {
+    // var $thingtype = $("select[name='thingtype']"),
+    //     $thing = $("select[name='thing']"),
+    //     $other = $("input[name='other']");
+
+    // if ($($thing).val() === '其他') {
+    //   $other.show();
+    //   $thingtype.hide();
+    // } else {
+    //   $thingtype.show();
+    //   $other.hide();
+    // }
   });
 
   $('.apply-btn').on('click', function () {

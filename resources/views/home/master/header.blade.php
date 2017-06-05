@@ -13,7 +13,7 @@
             @if (session()->has('user'))
                 <div class="has-login">
                     <a href="/home/myinfo">我的信息</a>
-                    <a href="/home/logou">退出</a>
+                    <a href="/home/logout">退出</a>
                 </div>
             @else
                 <div class="no-login">

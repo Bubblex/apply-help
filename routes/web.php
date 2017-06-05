@@ -25,6 +25,11 @@ Route::group(['namespace' => 'Home'], function() {
         Route::get('applydetail', 'HomeController@applyDetailPage');
 
         /**
+         * 申请帮助页
+         */
+        Route::get('applyhelp', 'HomeController@applyHelpPage');
+
+        /**
          * 必须登录
          */
         Route::group(['middleware' => 'auth'], function() {
@@ -61,6 +66,11 @@ Route::group(['prefix' => 'home', 'namespace' => 'Home'], function() {
      * 登录接口
      */
     Route::post('login', 'AccountController@login');
+
+    /**
+     * 退出登录
+     */
+    Route::get('logout', 'AccountController@logout');
 });
 
 
