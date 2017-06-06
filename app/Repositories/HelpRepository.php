@@ -35,6 +35,10 @@ class HelpRepository
         return $this->help->with($with)->select($columns)->find($id);
     }
 
+    public function findWhere($where = [], $columns = ['*']) {
+        return $this->help->where($where)->select($columns)->get();
+    }
+
     /**
      * 根据 id 更新数据
      *

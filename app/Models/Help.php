@@ -15,6 +15,7 @@ class Help extends Model
 
     protected $fillable = [
         'name',
+        'user_id',
         'gender',
         'id_number',
         'telephone',

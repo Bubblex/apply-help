@@ -45,18 +45,36 @@
                         <div class="td">资助人</div>
                         <div class="td">操作</div>
                     </div>
-                    @foreach ($donates as $item)
+                    @foreach ($helps as $item)
                     <div class="tr">
                         <div class="td detail-container">
-                            <img src="{{ $item->help->image }}">
-                            <p class="detail">{{ $item->help->summary }}</p>
-                            <a href="{{ $item->help->id }}">查看详情</a>
+                            <img src="{{ $item->image }}">
+                            <p class="detail">{{ $item->summary }}</p>
+                            <a href="/home/applydetail?id={{ $item->id }}">查看详情</a>
                         </div>
-                        <div class="td">{{ $item->help->needed }}</div>
-                        <div class="td"></div>
-                        <div class="td">{{ $item->user->name }}</div>
+                        <div class="td">{{ $item->needed }}</div>
                         <div class="td">
-                            <a class="right-btn active" href="javascript:">修改</a>
+                            @if ($item->status == 1)
+                                已发布
+                            @elseif ($item->status == 2)
+                                审核中
+                            @elseif ($item->status == 3)
+                                审核未通过
+                            @elseif ($item->status == 4)
+                                已取消申请
+                            @endif
+                        </div>
+                        <div class="td">{{ $item->name }}</div>
+                        <div class="td">
+                            @if ($item->status == 2 || $item->status == 3)
+                                <a class="right-btn active" href="javascript:">修改</a>
+                            @endif
+                            @if ($item->status == 4)
+                                <a class="right-btn active cancel-apply" data-id="{{ $item->id }}" data-status="2" href="javascript:">重新申请</a>
+                            @endif
+                            @if ($item->status == 1)
+                                <a class="right-btn active cancel-apply" data-id="{{ $item->id }}" data-status="4" href="javascript:">取消申请</a>
+                            @endif
                             <a class="right-btn" href="javascript:">删除</a>
                         </div>
                     </div>
@@ -64,15 +82,16 @@
                 </div>
             </div>
         </div>
+        {!! $helps->render() !!}
         <!--  分页-->
-        <div class="pageContent">
+        {{-- <div class="pageContent">
             <div class="page">
                 <input id="totalCount" type="hidden" value="2">
                 <input id="page" type="hidden" value="2">
                 <input id="pageCount" type="hidden" value="4">
                 <ul id="webPagination"></ul>
             </div>
-        </div>
+        </div> --}}
     </div>
     <script src="/resource/vendor/jquery/jquery-3.1.1.min.js"></script>
     <script src="/resource/vendor/pagination/jquery.pagination.js"></script>

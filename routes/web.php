@@ -67,6 +67,11 @@ Route::group(['namespace' => 'Home'], function() {
              * 历史申请
              */
             Route::get('applyhistory', 'HomeController@applyHistory');
+
+            /**
+             * 取消申请
+             */
+            Route::post('cancel/apply', 'HomeController@cancelApply');
         });
     });
 });

@@ -39,7 +39,7 @@
 
     var value = $thingtype.val()
 
-    if (value === '-1') {
+    if (value === '-2') {
       $thingtype.show();
       $thing.hide()
       $other.show();
@@ -58,7 +58,7 @@
       success: function(data) {
         $thing.empty()
         for (let i = 0; i < data.goods.length; i++) {
-          $thing.append('<option value="' + data.goods[i].id + '">' + data.goods[i].name + '</option>')
+          $thing.append('<option value="' + data.goods[i].name + '">' + data.goods[i].name + '</option>')
         }
       }
     })

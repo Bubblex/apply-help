@@ -15,6 +15,7 @@ class CreateHelpsTable extends Migration
     {
         Schema::create('helps', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->comment('申请人');
             $table->string('name')->comment('真实姓名');
             $table->integer('gender')->comment('性别');
             $table->string('id_number')->comment('身份证号');

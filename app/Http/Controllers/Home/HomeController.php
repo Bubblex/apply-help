@@ -120,12 +120,11 @@ class HomeController extends Controller
      */
     public function addHelp(Request $request) {
         $attribute = $request->all();
+        $attribute['user_id'] = session('user')->id;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $path = $request->file('image')->store('/uploads');
-            // $filePath = 'uploads/'.time().'.'.$image->getClientOriginalExtension();
-            // Image::make($image)->save($filePath);
             $attribute['image'] = '/'.$path;
         }
 
@@ -181,5 +180,26 @@ class HomeController extends Controller
         return view('home.helphistory')->with([
             'donates' => $this->donate->paginate([['user_id', session('user')->id]])
         ]);
+    }
+
+    public function applyHistory() {
+        return view('home.applyhistory')->with([
+            'helps' => $this->help->paginate([['user_id', session('user')->id]])
+        ]);
+    }
+
+    public function cancelApply(Request $request) {
+        if ($this->help->update($request->id, ['status' => $request->status])) {
+            return response()->json([
+                'status' => 1,
+                'message' => '修改成功',
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '修改失败',
+            ]);
+        }
     }
 }
