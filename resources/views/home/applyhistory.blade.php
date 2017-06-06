@@ -75,7 +75,7 @@
                             @if ($item->status == 1)
                                 <a class="right-btn active cancel-apply" data-id="{{ $item->id }}" data-status="4" href="javascript:">取消申请</a>
                             @endif
-                            <a class="right-btn" href="javascript:">删除</a>
+                            <a class="right-btn delete-apply" data-id="{{ $item->id }}" href="javascript:">删除</a>
                         </div>
                     </div>
                     @endforeach

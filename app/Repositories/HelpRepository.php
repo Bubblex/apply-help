@@ -81,4 +81,8 @@ class HelpRepository
     public function paginate($where = [], $columns = ['*']) {
         return $this->help->where($where)->with('donates')->select($columns)->paginate();
     }
+
+    public function delete($id) {
+        return $this->help->destroy($id);
+    }
 }

@@ -72,6 +72,11 @@ Route::group(['namespace' => 'Home'], function() {
              * 取消申请
              */
             Route::post('cancel/apply', 'HomeController@cancelApply');
+
+            /**
+             * 删除帮助
+             */
+            Route::post('delete/apply', 'HomeController@deleteApply');
         });
     });
 });

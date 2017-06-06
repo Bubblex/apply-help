@@ -202,4 +202,19 @@ class HomeController extends Controller
             ]);
         }
     }
+
+    public function deleteApply(Request $request) {
+        if ($this->help->delete($request->id)) {
+            return response()->json([
+                'status' => 1,
+                'message' => '删除成功',
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '删除失败',
+            ]);
+        }
+    }
 }
