@@ -55,7 +55,7 @@
                     <p class="title">捐助的物品：</p>
                 </div>
                 <div class="col-17">
-                    <p>222</p>
+                    <p class="explain-needed"></p>
                 </div>
             </div>
             <div class="row confirm-row">

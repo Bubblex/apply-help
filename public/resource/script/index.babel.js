@@ -59,10 +59,12 @@
 
 (function ($) {
   $('.help-btn').on('click', function () {
+    $('input[name="id"]').val($(this).attr('data-id'))
+    $('.explain-needed').text($(this).attr('data-needed'))
     $('.layer-container').fadeIn();
   });
 
-  $('#confirm-').on('click', function () {
+  $('#confirm-help').on('click', function () {
     $.ajax({
       url: '/home/confirm/donate',
       type: 'post',

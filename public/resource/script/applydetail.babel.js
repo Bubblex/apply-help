@@ -2,6 +2,7 @@
 
 (function ($) {
   $('#confirm-info').on('click', function () {
+    $('.explain-needed').text($(this).attr('data-needed'))
     $('.layer-container').fadeIn();
   });
 
