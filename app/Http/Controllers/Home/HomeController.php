@@ -106,9 +106,17 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function applyHelpPage() {
+    public function applyHelpPage(Request $request) {
+        if ($request->id) {
+            return view('Home.applyhelp')->with([
+                'goodsType' => $this->goodsType->all(),
+                'id' => $request->id,
+                'help' => $this->help->find($request->id)
+            ]);
+        }
+
         return view('Home.applyhelp')->with([
-            'goodsType' => $this->goodsType->all()
+            'goodsType' => $this->goodsType->all(),
         ]);
     }
 
@@ -138,6 +146,30 @@ class HomeController extends Controller
             return response()->json([
                 'status' => 2,
                 'message' => '申请失败',
+            ]);
+        }
+    }
+
+    public function updateHelp(Request $request) {
+        $attribute = $request->all();
+        $attribute['user_id'] = session('user')->id;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $path = $request->file('image')->store('/uploads');
+            $attribute['image'] = '/'.$path;
+        }
+
+        if ($this->help->update($request->id, $attribute)) {
+            return response()->json([
+                'status' => 1,
+                'message' => '修改成功',
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 2,
+                'message' => '修改失败',
             ]);
         }
     }

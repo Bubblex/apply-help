@@ -54,6 +54,11 @@ Route::group(['namespace' => 'Home'], function() {
             Route::post('help/add', 'HomeController@addHelp');
 
             /**
+             * 修改帮助
+             */
+            Route::post('help/update', 'HomeController@updateHelp');
+
+            /**
              * 确认捐助
              */
             Route::post('confirm/donate', 'HomeController@confirmDonate');

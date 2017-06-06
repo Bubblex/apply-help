@@ -67,7 +67,7 @@
                         <div class="td">{{ $item->name }}</div>
                         <div class="td">
                             @if ($item->status == 2 || $item->status == 3)
-                                <a class="right-btn active" href="javascript:">修改</a>
+                                <a class="right-btn active" href="/home/applyhelp?id={{ $item->id }}">修改</a>
                             @endif
                             @if ($item->status == 4)
                                 <a class="right-btn active cancel-apply" data-id="{{ $item->id }}" data-status="2" href="javascript:">重新申请</a>
