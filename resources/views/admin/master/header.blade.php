@@ -32,9 +32,6 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="/"><i class="fa fa-dashboard fa-fw"></i> 前往首页</a>
-                </li>
-                <li>
                     <a href="/admin/user"><i class="fa fa-table fa-fw"></i> 用户管理</a>
                 </li>
                 <li>
