@@ -64,7 +64,11 @@
                                 已取消申请
                             @endif
                         </div>
-                        <div class="td">{{ $item->name }}</div>
+                        <div class="td">
+                            @foreach ($item->donates as $donate)
+                                <p>{{ $donate->name }}</p>
+                            @endforeach
+                        </div>
                         <div class="td">
                             @if ($item->status == 2 || $item->status == 3)
                                 <a class="right-btn active" href="/home/applyhelp?id={{ $item->id }}">修改</a>
