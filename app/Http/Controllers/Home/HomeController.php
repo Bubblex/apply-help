@@ -150,6 +150,14 @@ class HomeController extends Controller
         }
     }
 
+    public function search(Request $request) {
+        return view('home.search')->with([
+            'helps' => $this->help->paginate([
+                ['needed', 'like', '%' . $request->search . '%']
+            ])
+        ]);
+    }
+
     public function updateHelp(Request $request) {
         $attribute = $request->all();
         $attribute['user_id'] = session('user')->id;

@@ -4,7 +4,7 @@
             <p>微助</p>
         </div>
         <div class="col-10">
-            <input class="header-input" placeholder="搜索你想捐助的物品">
+            <input class="header-input" value="{{ request()->search }}" placeholder="搜索你想捐助的物品">
         </div>
         <div class="col-3">
             <a class="header-search" href="javascript:">搜索</a>

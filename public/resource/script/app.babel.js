@@ -10,7 +10,7 @@
       alert('请输入搜索内容');
       return;
     } else {
-      window.location.href = '/search';
+      window.location.href = '/home/search?search=' + keyword;
     }
   });
 })(jQuery);

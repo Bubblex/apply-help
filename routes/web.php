@@ -20,6 +20,11 @@ Route::group(['namespace' => 'Home'], function() {
 
     Route::group(['prefix' => 'home'], function() {
         /**
+         * 搜索
+         */
+        Route::get('search', 'HomeController@search');
+
+        /**
          * 帮助详情页
          */
         Route::get('applydetail', 'HomeController@applyDetailPage');
