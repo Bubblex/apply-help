@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title>firekeeper-simple</title>
+    <title>微助</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
