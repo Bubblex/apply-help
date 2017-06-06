@@ -40,7 +40,7 @@
                 <p>{{ count($help->donates) }}人帮助</p>
             </div>
             <div class="col-3 offset-18">
-                <a id="confirm-info" href="javascript:">帮助</a>
+                <a id="confirm-info" data-needed="{{ $help->needed }}" href="javascript:">帮助</a>
             </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
                     <p class="title"> 您的姓名：</p>
                 </div>
                 <div class="col-17">
-                    <p> aa</p>
+                    <p>{{ session('user') ? session('user')->name : '-' }}</p>
                 </div>
             </div>
             <div class="row confirm-row">
@@ -71,7 +71,7 @@
                     <p class="title"> 您的联系方式：</p>
                 </div>
                 <div class="col-17">
-                    <p>15156465</p>
+                    <p>{{ session('user') ? session('user')->telephone : '-' }}</p>
                 </div>
             </div>
             <div class="row confirm-row">
@@ -79,7 +79,7 @@
                     <p class="title"> 您的地址：</p>
                 </div>
                 <div class="col-17">
-                    <p>河北省石家庄市藁城市222</p>
+                    <p>{{ session('user') ? session('user')->address : '-' }}</p>
                 </div>
             </div>
             <p class="confirm-thanks">感谢您的爱心，工作人员讲在2个工作日内去上述地址取件，请耐心等候~</p>

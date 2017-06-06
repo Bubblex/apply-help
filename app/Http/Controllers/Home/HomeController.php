@@ -188,6 +188,15 @@ class HomeController extends Controller
             ]);
         }
 
+        $help = $this->help->find($request->id);
+
+        if ($help->user_id === session('user')->id) {
+            return response()->json([
+                'status' => 4,
+                'message' => '不能捐助自己申请的帮助',
+            ]);
+        }
+
         $result = $this->donate->create([
             'help_id' => $request->id,
             'user_id' => session('user')->id,

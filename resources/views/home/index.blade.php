@@ -65,7 +65,7 @@
                                     <p>{{ count($item->donates) }}人帮助</p>
                                 </div>
                                 <div class="col-4 offset-16">
-                                    <a class="help" href="javascript:">帮助</a>
+                                    <a class="help help-btn" data-id="{{ $item->id }}" href="javascript:">帮助</a>
                                 </div>
                             </div>
                         </div>
