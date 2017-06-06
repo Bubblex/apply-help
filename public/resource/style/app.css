@@ -2849,34 +2849,22 @@ a {
     color: #fff;
 }
 
-.pageContent {
+/*.pageContent {
     width: auto;
     height: 50px;
     margin-top: 50px;
-}
+}*/
 
-.page {
-    width: 570px;
-    float: left;
-    text-align: center;
+.pagination {
     color: #666;
-    float: right;
+    list-style: none;
 }
 
-.page ul {
-    display: block;
-}
-
-.page ul li {
+.pagination li {
     display: inline-block;
-    vertical-align: top;
-}
-
-.page ul li a {
     width: 30px;
     height: 30px;
     border: 1px solid #b6b6b6;
-    display: block;
     text-align: center;
     line-height: 30px;
     margin-right: 10px;
@@ -2884,7 +2872,21 @@ a {
     color: #999;
 }
 
-.page ul li a:hover {
+.pagination li span {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pagination li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #579f23;
+}
+
+.pagination li:hover a,
+.pagination li.active span {
     color: #fff;
     background-color: #579f23;
 }

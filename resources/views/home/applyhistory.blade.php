@@ -86,16 +86,10 @@
                 </div>
             </div>
         </div>
-        {!! $helps->render() !!}
+        <div style="text-align: right">
+            {!! $helps->render() !!}
+        </div>
         <!--  分页-->
-        {{-- <div class="pageContent">
-            <div class="page">
-                <input id="totalCount" type="hidden" value="2">
-                <input id="page" type="hidden" value="2">
-                <input id="pageCount" type="hidden" value="4">
-                <ul id="webPagination"></ul>
-            </div>
-        </div> --}}
     </div>
     <script src="/resource/vendor/jquery/jquery-3.1.1.min.js"></script>
     <script src="/resource/vendor/pagination/jquery.pagination.js"></script>
