@@ -163,6 +163,7 @@
 
     if (id) {
       data.append("id", id);
+      data.append("status", 2);
       $.ajax({
         url: '/home/help/update',
         type: 'post',
